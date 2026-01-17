@@ -1,11 +1,4 @@
-add_library(
-    libvtsh
-    STATIC
-    vtsh.c
-)
+add_library(libvtsh vtsh.c)
 
-target_include_directories(
-    libvtsh
-    PUBLIC
-    .
-)
+target_include_directories(libvtsh PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+

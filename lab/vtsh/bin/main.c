@@ -2,6 +2,6 @@
 #include <vtsh.h>
 
 int main() {
-  printf("%s", vtsh_prompt());
-  printf("Hello, world!\n");
+  vtsh_loop();
+  return 0;
 }
