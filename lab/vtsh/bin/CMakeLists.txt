@@ -1,15 +1,25 @@
-add_executable(vtsh main.c)
-target_link_libraries(vtsh PRIVATE libvtsh)
+add_executable(vtsh_main main.c)
+target_link_libraries(vtsh_main PRIVATE libvtsh)
+target_include_directories(vtsh_main PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 
-add_executable(proc-fork proc-fork.c)
-target_link_libraries(proc-fork PRIVATE libvtsh)
+add_executable(proc_fork proc_fork.c)
+set_target_properties(proc_fork PROPERTIES OUTPUT_NAME "proc-fork")
+target_include_directories(proc_fork PRIVATE ${CMAKE_CURRENT_LIST_DIR})
+target_compile_options(proc_fork PRIVATE -O0)
 
-add_executable(shell shell.c)
-target_link_libraries(shell PRIVATE libvtsh)
+add_executable(shell_or shell.c)
+set_target_properties(shell_or PROPERTIES OUTPUT_NAME "shell-or")
+target_include_directories(shell_or PRIVATE ${CMAKE_CURRENT_LIST_DIR})
+target_compile_options(shell_or PRIVATE -O0)
 
-add_executable(cpu-sort cpu_sort.c)
-target_link_libraries(cpu-sort PRIVATE libvtsh)
+# cpu-sort
+add_executable(cpu_sort cpu_sort.c)
+set_target_properties(cpu_sort PROPERTIES OUTPUT_NAME "cpu-sort")
+target_include_directories(cpu_sort PRIVATE ${CMAKE_CURRENT_LIST_DIR})
+target_compile_options(cpu_sort PRIVATE -O0)
 
-add_executable(ema-replace-int ema_replace_int.c)
-target_link_libraries(ema-replace-int PRIVATE libvtsh)
-
+# ema-replace-int
+add_executable(ema_replace_int ema_replace_int.c)
+set_target_properties(ema_replace_int PROPERTIES OUTPUT_NAME "ema-replace-int")
+target_include_directories(ema_replace_int PRIVATE ${CMAKE_CURRENT_LIST_DIR})
+target_compile_options(ema_replace_int PRIVATE -O0)
