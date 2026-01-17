@@ -137,7 +137,8 @@ static int vtsh_run(char **argv) {
 
     if (pid == 0) {
         execvp(argv[0], argv);
-        fprintf(stderr, "Команда не найдена: %s (%s)\n", argv[0], strerror(errno));
+        printf("Command not found\n");
+        fflush(stdout);
         _exit(127);
     }
 
@@ -251,9 +252,9 @@ static void vtsh_eval(char *line) {
 
 void vtsh_loop(void) {
     char line[MAX_LINE];
-
     signal(SIGCHLD, sigchld_handler);
-
+    setvbuf(stdin, NULL, _IONBF, 0);
+    
     while (1) {
         printf("vtsh> ");
         fflush(stdout);
