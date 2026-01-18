@@ -37,7 +37,6 @@ static double diff_sec(struct timespec a, struct timespec b) {
 }
 
 static void alias_print_all(void) {
-    // Формат, который можно вставить обратно в shell
     for (int i = 0; i < alias_count; i++) {
         printf("alias %s='%s'\n", aliases[i].name, aliases[i].value);
     }
@@ -52,7 +51,6 @@ static void alias_set(const char *name, const char *value) {
 
     for (int i = 0; i < alias_count; i++) {
         if (strcmp(aliases[i].name, name) == 0) {
-            // гарантируем нуль-терминатор
             snprintf(aliases[i].value, MAX_ALIAS_VALUE, "%s", value);
             return;
         }
